@@ -33,21 +33,13 @@ public class StockController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StockDTO> update(@Valid @RequestBody StockDTO dto) {
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(service.update(dto));
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<StockDTO>> findAll(){
 
-        List<StockDTO> list = new ArrayList<>();
-        StockDTO dto = new StockDTO();
-        dto.setId(1L);
-        dto.setName("Magazine Luiza");
-        dto.setPrice(100D);
-        dto.setVariation(10D);
-        dto.setDate(LocalDate.now());
-        list.add(dto);
-        return ResponseEntity.ok(list);
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
