@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: 123456
-    url: jdbc:postgresql://localhost/postgres
+    username: msahsfsmylkvfl
+    password: db4522a6ef2d31320ea6cb65db517752b5a58b3809c1b9a51b36b9d9eddc28b2
+    url: postgres://msahsfsmylkvfl:db4522a6ef2d31320ea6cb65db517752b5a58b3809c1b9a51b36b9d9eddc28b2@ec2-54-211-176-156.compute-1.amazonaws.com:5432/dbnlm1k2lk2ali
     platform: postgres
     initialization-mode: always
     continue-on-error: true
