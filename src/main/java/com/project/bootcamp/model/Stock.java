@@ -1,32 +1,28 @@
-package com.project.bootcamp.model.dto;
+package com.project.bootcamp.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "tb_stock")
+public class Stock {
 
-public class StockDTO {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
-    @NotNull
+    @Column(name = "name")
     private String name;
 
-    @NotNull
-    @DecimalMin(value="0.00")
-    @Digits(integer=6, fraction=2)
+    @Column(name = "price")
     private Double price;
 
-    @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
-    private LocalDate date;
-
-    @NotNull
-    @Digits(integer=3, fraction=2)
+    @Column(name = "variation")
     private Double variation;
+
+    @Column(name = "date")
+    private LocalDate date;
 
     public Long getId() {
         return id;
@@ -52,19 +48,19 @@ public class StockDTO {
         this.price = price;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
     public Double getVariation() {
         return variation;
     }
 
     public void setVariation(Double variation) {
         this.variation = variation;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }

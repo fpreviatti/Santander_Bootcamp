@@ -1,13 +1,18 @@
 package com.project.bootcamp.controller;
 
 import com.project.bootcamp.model.dto.StockDTO;
+import com.project.bootcamp.service.StockService;
 import org.apache.coyote.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 //import java.awt.*;
 import javax.validation.Valid;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +22,13 @@ import java.util.List;
 @RequestMapping(value = "/stock")
 public class StockController {
 
-    @PostMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @Autowired
+    private StockService service;
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<StockDTO> save(@Valid @RequestBody StockDTO dto){
-        return ResponseEntity.ok(dto);
+        //save(dto).getBody();
+        return ResponseEntity.ok(service.save(dto));
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
